@@ -38,11 +38,11 @@ namespace MegaRSS_1
 
                 itemBindingSource.Add(oItem);
 
-                //using (var context = new MyDbContext())
-                //{
-                //    context.Items.Add(oItem);
-                //    context.SaveChanges();
-                //}
+                using (var context = new MyDbContext())
+                {
+                    context.Items.Add(oItem);
+                    context.SaveChanges();
+                }
 
                 //dgvItens.Rows.Add(feedItem.Title);
                 //Console.WriteLine(feedItem.Link.ToString());
