@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,14 @@ namespace MegaRSS_1
         {
             InitializeComponent();
 
-            ReadRSS("http://www.andrealveslima.com.br/blog/index.php/feed/");
+            ReadRSS("http://itdmusic.me/category/brazilian/feed");
         }
 
         public void ReadRSS (string sUrl)
         {
             Item oItem;
 
-            var feed = Argotic.Syndication.RssFeed.Create(new Uri(sUrl), new Argotic.Common.SyndicationResourceLoadSettings(){ RetrievalLimit = 5 });
+            var feed = Argotic.Syndication.RssFeed.Create(new Uri(sUrl), new Argotic.Common.SyndicationResourceLoadSettings(){ RetrievalLimit = 50 });
             foreach (var feedItem in feed.Channel.Items)
             {
                 oItem = new Item
@@ -36,12 +37,25 @@ namespace MegaRSS_1
                     ItemResumo = feedItem.Description
                 };
 
-                itemBindingSource.Add(oItem);
-
                 using (var context = new MyDbContext())
                 {
-                    context.Items.Add(oItem);
-                    context.SaveChanges();
+                    Item resItem = context.Items
+                        .Where(b => b.ItemUrl.Equals(oItem.ItemUrl))
+                        .FirstOrDefault();
+
+                    if (resItem == null)
+                    {
+                        try
+                        {
+                            context.Items.Add(oItem);
+                            context.SaveChanges();
+                        } catch (DbEntityValidationException ex)
+                        {
+                            
+                        }
+                    }
+
+                    itemBindingSource.Add(oItem);
                 }
 
                 //dgvItens.Rows.Add(feedItem.Title);
