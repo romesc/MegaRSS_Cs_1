@@ -18,6 +18,8 @@ namespace MegaRSS_1
         {
             Item oItem;
 
+            
+
             var feed = FeedReader.ReadAsync(sUrl).Result;
             
             foreach (var feedItem in feed.Items)
@@ -48,7 +50,7 @@ namespace MegaRSS_1
             string kCat = "";
             //string kFeed = "";
 
-            //ReadRSS("http://itdmusic.me/category/brazilian/feed");
+            ReadRSS("http://itdmusic.me/category/brazilian/feed");
 
             var lCategorias = DadosCategoria.getAll();
             var lFeeds = DadosFeed.getAll();
@@ -67,6 +69,11 @@ namespace MegaRSS_1
             }
 
             tvLista.ExpandAll();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DadosGenerico.Inicializa();
         }
     }
 }

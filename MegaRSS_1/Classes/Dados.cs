@@ -133,4 +133,15 @@ namespace MegaRSS_1.Classes
             return resFeed;
         }
     }
+
+    public static class DadosGenerico
+    {
+        public static void Inicializa()
+        {
+            using (var context = new MyDbContext())
+            {
+                Categoria res = context.Categorias.FirstOrDefault();
+            }
+        }
+    }
 }
