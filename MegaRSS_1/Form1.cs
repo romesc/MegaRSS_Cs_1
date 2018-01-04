@@ -2,8 +2,8 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using CodeHollow.FeedReader;
 using MegaRSS_1.Classes;
+using SimpleFeedReader;
 
 namespace MegaRSS_1
 {
@@ -18,20 +18,19 @@ namespace MegaRSS_1
         {
             Item oItem;
 
-            
+            var reader = new FeedReader();
+            var oFeed = reader.RetrieveFeed(sUrl);
 
-            var feed = FeedReader.ReadAsync(sUrl).Result;
-            
-            foreach (var feedItem in feed.Items)
+            foreach (var fItem in oFeed)
             {
                 oItem = new Item
                 {
-                    ItemUrl = feedItem.Link.ToString(),
-                    ItemTitulo = feedItem.Title,
-                    ItemAutor = feedItem.Author,
-                    ItemDatahora = feedItem.PublishingDate.GetValueOrDefault(),
+                    ItemUrl = fItem.Uri.ToString(),
+                    ItemTitulo = fItem.Title,
+                    //ItemAutor = fItem.,
+                    ItemDatahora = fItem.Date.DateTime,
                     ItemLido = false,
-                    ItemResumo = feedItem.Description
+                    ItemResumo = fItem.Summary
                 };
 
                 DadosItem.Insert(oItem);
@@ -42,7 +41,7 @@ namespace MegaRSS_1
 
         private void dgvItens_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            wbSite.Url = new Uri(((Item)itemBindingSource[dgvItens.CurrentRow.Index]).ItemUrl);
+            //wbSite.Url = new Uri(((Item)itemBindingSource[dgvItens.CurrentRow.Index]).ItemUrl);
         }
 
         private void btnCarregar_Click(object sender, EventArgs e)
@@ -50,7 +49,7 @@ namespace MegaRSS_1
             string kCat = "";
             //string kFeed = "";
 
-            ReadRSS("http://itdmusic.me/category/brazilian/feed");
+            ReadRSS("http://www.blackboxrepack.com/feed/");
 
             var lCategorias = DadosCategoria.getAll();
             var lFeeds = DadosFeed.getAll();

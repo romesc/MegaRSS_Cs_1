@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvItens = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.feedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manutençãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tvLista = new System.Windows.Forms.TreeView();
+            this.btnCarregar = new System.Windows.Forms.Button();
             this.feedCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemTituloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,17 +47,9 @@
             this.itemDatahoraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemLidoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wbSite = new System.Windows.Forms.WebBrowser();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.feedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manutençãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tvLista = new System.Windows.Forms.TreeView();
-            this.btnCarregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvItens
@@ -69,13 +68,71 @@
             this.itemDatahoraDataGridViewTextBoxColumn,
             this.itemLidoDataGridViewCheckBoxColumn});
             this.dgvItens.DataSource = this.itemBindingSource;
-            this.dgvItens.Location = new System.Drawing.Point(206, 71);
+            this.dgvItens.Location = new System.Drawing.Point(261, 71);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.RowHeadersVisible = false;
-            this.dgvItens.Size = new System.Drawing.Size(699, 501);
+            this.dgvItens.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvItens.Size = new System.Drawing.Size(797, 501);
             this.dgvItens.TabIndex = 0;
             this.dgvItens.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvItens_CellMouseClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.categoriasToolStripMenuItem,
+            this.feedsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manutençãoToolStripMenuItem});
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // manutençãoToolStripMenuItem
+            // 
+            this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
+            this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.manutençãoToolStripMenuItem.Text = "Manutenção";
+            // 
+            // feedsToolStripMenuItem
+            // 
+            this.feedsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manutençãoToolStripMenuItem1});
+            this.feedsToolStripMenuItem.Name = "feedsToolStripMenuItem";
+            this.feedsToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.feedsToolStripMenuItem.Text = "Feeds";
+            // 
+            // manutençãoToolStripMenuItem1
+            // 
+            this.manutençãoToolStripMenuItem1.Name = "manutençãoToolStripMenuItem1";
+            this.manutençãoToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.manutençãoToolStripMenuItem1.Text = "Manutenção";
+            // 
+            // tvLista
+            // 
+            this.tvLista.HideSelection = false;
+            this.tvLista.Location = new System.Drawing.Point(12, 71);
+            this.tvLista.Name = "tvLista";
+            this.tvLista.Size = new System.Drawing.Size(243, 501);
+            this.tvLista.TabIndex = 3;
+            // 
+            // btnCarregar
+            // 
+            this.btnCarregar.Location = new System.Drawing.Point(12, 27);
+            this.btnCarregar.Name = "btnCarregar";
+            this.btnCarregar.Size = new System.Drawing.Size(99, 38);
+            this.btnCarregar.TabIndex = 4;
+            this.btnCarregar.Text = "Carregar";
+            this.btnCarregar.UseVisualStyleBackColor = true;
+            this.btnCarregar.Click += new System.EventHandler(this.btnCarregar_Click);
             // 
             // feedCodigoDataGridViewTextBoxColumn
             // 
@@ -152,78 +209,12 @@
             // 
             this.itemBindingSource.DataSource = typeof(MegaRSS_1.Item);
             // 
-            // wbSite
-            // 
-            this.wbSite.Location = new System.Drawing.Point(911, 71);
-            this.wbSite.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbSite.Name = "wbSite";
-            this.wbSite.Size = new System.Drawing.Size(147, 501);
-            this.wbSite.TabIndex = 1;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.categoriasToolStripMenuItem,
-            this.feedsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1070, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manutençãoToolStripMenuItem});
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            // 
-            // manutençãoToolStripMenuItem
-            // 
-            this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
-            this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.manutençãoToolStripMenuItem.Text = "Manutenção";
-            // 
-            // feedsToolStripMenuItem
-            // 
-            this.feedsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manutençãoToolStripMenuItem1});
-            this.feedsToolStripMenuItem.Name = "feedsToolStripMenuItem";
-            this.feedsToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.feedsToolStripMenuItem.Text = "Feeds";
-            // 
-            // manutençãoToolStripMenuItem1
-            // 
-            this.manutençãoToolStripMenuItem1.Name = "manutençãoToolStripMenuItem1";
-            this.manutençãoToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
-            this.manutençãoToolStripMenuItem1.Text = "Manutenção";
-            // 
-            // tvLista
-            // 
-            this.tvLista.HideSelection = false;
-            this.tvLista.Location = new System.Drawing.Point(12, 71);
-            this.tvLista.Name = "tvLista";
-            this.tvLista.Size = new System.Drawing.Size(188, 501);
-            this.tvLista.TabIndex = 3;
-            // 
-            // btnCarregar
-            // 
-            this.btnCarregar.Location = new System.Drawing.Point(12, 27);
-            this.btnCarregar.Name = "btnCarregar";
-            this.btnCarregar.Size = new System.Drawing.Size(99, 38);
-            this.btnCarregar.TabIndex = 4;
-            this.btnCarregar.Text = "Carregar";
-            this.btnCarregar.UseVisualStyleBackColor = true;
-            this.btnCarregar.Click += new System.EventHandler(this.btnCarregar_Click);
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1070, 584);
             this.Controls.Add(this.btnCarregar);
             this.Controls.Add(this.tvLista);
-            this.Controls.Add(this.wbSite);
             this.Controls.Add(this.dgvItens);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -232,9 +223,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +234,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvItens;
-        private System.Windows.Forms.WebBrowser wbSite;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
