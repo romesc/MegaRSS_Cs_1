@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Validation;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MegaRSS_1.Classes;
 
 namespace MegaRSS_1
 {
@@ -16,8 +11,6 @@ namespace MegaRSS_1
         public Form1()
         {
             InitializeComponent();
-
-            ReadRSS("http://itdmusic.me/category/brazilian/feed");
         }
 
         public void ReadRSS (string sUrl)
@@ -37,40 +30,41 @@ namespace MegaRSS_1
                     ItemResumo = feedItem.Description
                 };
 
-                using (var context = new MyDbContext())
-                {
-                    Item resItem = context.Items
-                        .Where(b => b.ItemUrl.Equals(oItem.ItemUrl))
-                        .FirstOrDefault();
+                DadosItem.Insert(oItem);
 
-                    if (resItem == null)
-                    {
-                        try
-                        {
-                            context.Items.Add(oItem);
-                            context.SaveChanges();
-                        } catch (DbEntityValidationException ex)
-                        {
-                            
-                        }
-                    }
-
-                    itemBindingSource.Add(oItem);
-                }
-
-                //dgvItens.Rows.Add(feedItem.Title);
-                //Console.WriteLine(feedItem.Link.ToString());
-                //Console.WriteLine(feedItem.Description);
-                //Console.WriteLine("----------------------------------------------------");
-                //Console.WriteLine("----------------------------------------------------");
+                itemBindingSource.Add(oItem);
             }
-
-            //Console.ReadLine();
         }
 
         private void dgvItens_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             wbSite.Url = new Uri(((Item)itemBindingSource[dgvItens.CurrentRow.Index]).ItemUrl);
+        }
+
+        private void btnCarregar_Click(object sender, EventArgs e)
+        {
+            string kCat = "";
+            //string kFeed = "";
+
+            //ReadRSS("http://itdmusic.me/category/brazilian/feed");
+
+            var lCategorias = DadosCategoria.getAll();
+            var lFeeds = DadosFeed.getAll();
+            var lItens = DadosItem.retornaNaoLidos();
+
+            foreach (Categoria catAux in lCategorias)
+            {
+                kCat = "cat|" + catAux.CatCodigo.ToString();
+
+                tvLista.Nodes.Add(kCat, catAux.CatDescricao);
+
+                foreach (Feed fdAux in lFeeds.Where(b => b.CatCodigo.Equals(catAux.CatCodigo)).ToList())
+                {
+                    tvLista.Nodes[kCat].Nodes.Add(fdAux.FeedCodigo.ToString(), fdAux.FeedTitulo.TrimEnd());
+                }
+            }
+
+            tvLista.ExpandAll();
         }
     }
 }
