@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using CodeHollow.FeedReader;
 using MegaRSS_1.Classes;
 
 namespace MegaRSS_1
@@ -17,15 +18,16 @@ namespace MegaRSS_1
         {
             Item oItem;
 
-            var feed = Argotic.Syndication.RssFeed.Create(new Uri(sUrl), new Argotic.Common.SyndicationResourceLoadSettings(){ RetrievalLimit = 50 });
-            foreach (var feedItem in feed.Channel.Items)
+            var feed = FeedReader.ReadAsync(sUrl).Result;
+            
+            foreach (var feedItem in feed.Items)
             {
                 oItem = new Item
                 {
                     ItemUrl = feedItem.Link.ToString(),
                     ItemTitulo = feedItem.Title,
                     ItemAutor = feedItem.Author,
-                    ItemDatahora = feedItem.PublicationDate,
+                    ItemDatahora = feedItem.PublishingDate.GetValueOrDefault(),
                     ItemLido = false,
                     ItemResumo = feedItem.Description
                 };
