@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvItens = new System.Windows.Forms.DataGridView();
-            this.wbSite = new System.Windows.Forms.WebBrowser();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,17 +72,9 @@
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.RowHeadersVisible = false;
-            this.dgvItens.Size = new System.Drawing.Size(699, 501);
+            this.dgvItens.Size = new System.Drawing.Size(852, 501);
             this.dgvItens.TabIndex = 0;
             this.dgvItens.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvItens_CellMouseClick);
-            // 
-            // wbSite
-            // 
-            this.wbSite.Location = new System.Drawing.Point(911, 71);
-            this.wbSite.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbSite.Name = "wbSite";
-            this.wbSite.Size = new System.Drawing.Size(147, 501);
-            this.wbSite.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -223,13 +214,13 @@
             this.ClientSize = new System.Drawing.Size(1070, 584);
             this.Controls.Add(this.btnCarregar);
             this.Controls.Add(this.tvLista);
-            this.Controls.Add(this.wbSite);
             this.Controls.Add(this.dgvItens);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -242,7 +233,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvItens;
-        private System.Windows.Forms.WebBrowser wbSite;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;

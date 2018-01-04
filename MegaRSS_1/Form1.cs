@@ -38,7 +38,7 @@ namespace MegaRSS_1
 
         private void dgvItens_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            wbSite.Url = new Uri(((Item)itemBindingSource[dgvItens.CurrentRow.Index]).ItemUrl);
+            //wbSite.Url = new Uri(((Item)itemBindingSource[dgvItens.CurrentRow.Index]).ItemUrl);
         }
 
         private void btnCarregar_Click(object sender, EventArgs e)
@@ -65,6 +65,11 @@ namespace MegaRSS_1
             }
 
             tvLista.ExpandAll();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DadosGenerico.Inicializa();
         }
     }
 }

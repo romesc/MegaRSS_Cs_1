@@ -91,7 +91,6 @@ namespace MegaRSS_1.Classes
         }
     }
 
-
     public static class DadosFeed
     {
         public static int Insert(Feed oFeed)
@@ -131,6 +130,17 @@ namespace MegaRSS_1.Classes
             }
 
             return resFeed;
+        }
+    }
+
+    public static class DadosGenerico
+    {
+        public static void Inicializa()
+        {
+            using (var context = new MyDbContext())
+            {
+                Categoria res = context.Categorias.FirstOrDefault();
+            }
         }
     }
 }
