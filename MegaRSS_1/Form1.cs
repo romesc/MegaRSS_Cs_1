@@ -46,7 +46,7 @@ namespace MegaRSS_1
             string kCat = "";
             //string kFeed = "";
 
-            //ReadRSS("http://itdmusic.me/category/brazilian/feed");
+            ReadRSS("http://www.blackboxrepack.com/feed/");
 
             var lCategorias = DadosCategoria.getAll();
             var lFeeds = DadosFeed.getAll();
