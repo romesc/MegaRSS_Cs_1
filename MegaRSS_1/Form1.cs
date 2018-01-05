@@ -30,7 +30,7 @@ namespace MegaRSS_1
                     ItemResumo = feedItem.Description
                 };
 
-                DadosItem.Insert(oItem);
+                oItem = DadosItem.Insert(oItem);
 
                 itemBindingSource.Add(oItem);
             }
@@ -46,7 +46,7 @@ namespace MegaRSS_1
             string kCat = "";
             //string kFeed = "";
 
-            ReadRSS("http://www.blackboxrepack.com/feed/");
+            ReadRSS("http://www.superiorpics.com/c/Danielle_Campbell/rss.xml");
 
             var lCategorias = DadosCategoria.getAll();
             var lFeeds = DadosFeed.getAll();

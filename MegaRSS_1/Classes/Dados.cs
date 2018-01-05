@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MegaRSS_1.Classes
 {
     public static class DadosItem
     {
-        public static int Insert(Item oItem)
+        public static Item Insert(Item oItem)
         {
             int QtRes = -1;
+
+            // Ajuste dos campos
+            if (oItem.ItemDatahora < DateTime.Now.AddYears(-1))
+                oItem.ItemDatahora = DateTime.Now;
+
+            while (oItem.ItemTitulo.Contains("  "))
+            {
+                oItem.ItemTitulo = oItem.ItemTitulo.Replace("  ", " ");
+            }
 
             using (var context = new MyDbContext())
             {
@@ -32,7 +39,7 @@ namespace MegaRSS_1.Classes
                 }
             }
 
-            return QtRes;
+            return oItem;
         }
 
         public static List<Item> retornaNaoLidos()
