@@ -40,6 +40,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.ucFeed = new MegaRSS_1.UCs.ucFeed();
+            this.ucCategorias = new MegaRSS_1.UCs.ucCategorias();
             this.pnlLeft.SuspendLayout();
             this.pnlControl.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -180,6 +181,7 @@
             // pnlContent
             // 
             this.pnlContent.BackColor = System.Drawing.Color.Gray;
+            this.pnlContent.Controls.Add(this.ucCategorias);
             this.pnlContent.Controls.Add(this.ucFeed);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,6 +200,17 @@
             this.ucFeed.Name = "ucFeed";
             this.ucFeed.Size = new System.Drawing.Size(1022, 619);
             this.ucFeed.TabIndex = 0;
+            // 
+            // ucCategorias
+            // 
+            this.ucCategorias.BackColor = System.Drawing.Color.Gray;
+            this.ucCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucCategorias.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.ucCategorias.ForeColor = System.Drawing.Color.Black;
+            this.ucCategorias.Location = new System.Drawing.Point(0, 0);
+            this.ucCategorias.Name = "ucCategorias";
+            this.ucCategorias.Size = new System.Drawing.Size(1022, 619);
+            this.ucCategorias.TabIndex = 1;
             // 
             // frmPrincipal
             // 
@@ -235,5 +248,6 @@
         private System.Windows.Forms.Button btnSites;
         private System.Windows.Forms.Button btnCategorias;
         private UCs.ucFeed ucFeed;
+        private UCs.ucCategorias ucCategorias;
     }
 }

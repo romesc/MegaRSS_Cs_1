@@ -13,11 +13,13 @@ namespace MegaRSS_1.Forms
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
-
+            lblTitle.Text = "Manutenção de Categorias";
+            ucCategorias.BringToFront();
         }
 
         private void btnFeed_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = "Feed";
             ucFeed.BringToFront();
         }
 
@@ -39,7 +41,7 @@ namespace MegaRSS_1.Forms
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             DadosGenerico.Inicializa();
-
+            lblTitle.Text = "Feed";
             ucFeed.BringToFront();
         }
     }

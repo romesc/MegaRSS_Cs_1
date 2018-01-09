@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace MegaRSS_1.Classes
@@ -95,6 +96,38 @@ namespace MegaRSS_1.Classes
             }
 
             return resCat;
+        }
+
+        internal static int Gravar(Categoria oCat)
+        {
+            int QtRes = -1;
+
+            using (var context = new MyDbContext())
+            {
+                Categoria resCat = context.Categorias.Find(oCat.CatCodigo);
+
+                if (resCat != null)
+                {
+                    try
+                    {
+                        if (!resCat.CatDescricao.Equals(oCat.CatDescricao))
+                            resCat.CatDescricao = oCat.CatDescricao;
+
+                        if (!resCat.CatOrdem.Equals(oCat.CatOrdem))
+                            resCat.CatOrdem = oCat.CatOrdem;
+
+                        var entry = context.Entry(resCat);
+
+                        QtRes = context.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                    {
+
+                    }
+                }
+            }
+
+            return QtRes;
         }
     }
 

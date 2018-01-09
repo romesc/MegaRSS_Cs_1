@@ -172,6 +172,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCs\ucCategorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCs\ucCategorias.Designer.cs">
+      <DependentUpon>ucCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCs\ucFeed.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,10 +199,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UCs\ucCategorias.resx">
+      <DependentUpon>ucCategorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCs\ucFeed.resx">
       <DependentUpon>ucFeed.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="EF.Reverse.POCO.Core.ttinclude" />
     <None Include="EF.Reverse.POCO.ttinclude" />
     <None Include="packages.config" />

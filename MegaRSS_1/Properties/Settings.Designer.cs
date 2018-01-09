@@ -26,10 +26,10 @@ namespace MegaRSS_1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\dados.sdf")]
-        public string DbConnection {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\.\\dados.sdf")]
+        public string MyDbContext {
             get {
-                return ((string)(this["DbConnection"]));
+                return ((string)(this["MyDbContext"]));
             }
         }
     }
