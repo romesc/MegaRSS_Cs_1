@@ -17,6 +17,10 @@ namespace MegaRSS_1.UCs
         {
             Item oItem;
 
+            if (!Uri.IsWellFormedUriString(sUrl, UriKind.Absolute))
+                return;
+
+
             var feed = Argotic.Syndication.RssFeed.Create(new Uri(sUrl), new Argotic.Common.SyndicationResourceLoadSettings() { RetrievalLimit = 50 });
             foreach (var feedItem in feed.Channel.Items)
             {
@@ -39,9 +43,7 @@ namespace MegaRSS_1.UCs
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             string kCat = "";
-            //string kFeed = "";
-
-            ReadRSS("http://www.superiorpics.com/c/Danielle_Campbell/rss.xml");
+            string kFeed = "";
 
             var lCategorias = DadosCategoria.getAll();
             var lFeeds = DadosFeed.getAll();
@@ -55,11 +57,25 @@ namespace MegaRSS_1.UCs
 
                 foreach (Feed fdAux in lFeeds.Where(b => b.CatCodigo.Equals(catAux.CatCodigo)).ToList())
                 {
-                    tvFeeds.Nodes[kCat].Nodes.Add(fdAux.FeedCodigo.ToString(), fdAux.FeedTitulo.TrimEnd());
+                    kFeed = "feed|" + fdAux.FeedCodigo.ToString();
+
+                    tvFeeds.Nodes[kCat].Nodes.Add(kFeed, fdAux.FeedTitulo.TrimEnd());
                 }
             }
 
             tvFeeds.ExpandAll();
+        }
+
+        private void tvFeeds_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            string[] sAux = e.Node.Name.Split('|');
+
+            if (!sAux[0].Equals("feed"))
+                return;
+
+            var oFeed = DadosFeed.getFeedByCodigo(int.Parse(sAux[1]));
+
+            ReadRSS(oFeed.FeedUrl);
         }
     }
 }

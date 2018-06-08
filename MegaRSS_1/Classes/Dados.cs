@@ -160,6 +160,18 @@ namespace MegaRSS_1.Classes
             return QtRes;
         }
 
+        public static Feed getFeedByCodigo(int codigo)
+        {
+            Feed resFeed;
+
+            using (var context = new MyDbContext())
+            {
+                resFeed = context.Feeds.Where(b => b.FeedCodigo.Equals(codigo)).FirstOrDefault();
+            }
+
+            return resFeed;
+        }
+
         public static List<Feed> getAll()
         {
             List<Feed> resFeed;

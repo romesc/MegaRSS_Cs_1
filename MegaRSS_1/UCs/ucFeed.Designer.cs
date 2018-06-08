@@ -34,9 +34,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tvFeeds = new System.Windows.Forms.TreeView();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.tvFeeds = new System.Windows.Forms.TreeView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvItens = new System.Windows.Forms.DataGridView();
             this.feedCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemCodigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,29 +64,6 @@
             this.panel1.Size = new System.Drawing.Size(303, 619);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dgvItens);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
-            this.panel2.Location = new System.Drawing.Point(303, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(4, 10, 10, 10);
-            this.panel2.Size = new System.Drawing.Size(719, 619);
-            this.panel2.TabIndex = 1;
-            // 
-            // tvFeeds
-            // 
-            this.tvFeeds.BackColor = System.Drawing.Color.DarkGray;
-            this.tvFeeds.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tvFeeds.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvFeeds.FullRowSelect = true;
-            this.tvFeeds.HideSelection = false;
-            this.tvFeeds.Location = new System.Drawing.Point(10, 10);
-            this.tvFeeds.Name = "tvFeeds";
-            this.tvFeeds.Size = new System.Drawing.Size(289, 599);
-            this.tvFeeds.TabIndex = 0;
-            // 
             // btnAtualizar
             // 
             this.btnAtualizar.BackColor = System.Drawing.Color.DimGray;
@@ -100,6 +77,30 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = false;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
+            // tvFeeds
+            // 
+            this.tvFeeds.BackColor = System.Drawing.Color.DarkGray;
+            this.tvFeeds.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tvFeeds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvFeeds.FullRowSelect = true;
+            this.tvFeeds.HideSelection = false;
+            this.tvFeeds.Location = new System.Drawing.Point(10, 10);
+            this.tvFeeds.Name = "tvFeeds";
+            this.tvFeeds.Size = new System.Drawing.Size(289, 599);
+            this.tvFeeds.TabIndex = 0;
+            this.tvFeeds.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvFeeds_AfterSelect);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvItens);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
+            this.panel2.Location = new System.Drawing.Point(303, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(4, 10, 10, 10);
+            this.panel2.Size = new System.Drawing.Size(719, 619);
+            this.panel2.TabIndex = 1;
             // 
             // dgvItens
             // 
